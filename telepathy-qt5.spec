@@ -13,6 +13,11 @@ BuildRequires:	pkgconfig(farstream-0.2)
 BuildRequires:	pkgconfig(telepathy-farstream)
 BuildRequires:	pkgconfig(telepathy-glib)
 BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:	python
 BuildRequires:	python-dbus
 BuildRequires:	cmake
