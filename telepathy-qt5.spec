@@ -5,7 +5,7 @@ Summary:	qt5 client for telepathy
 Name:		telepathy-qt5
 Version:	0.9.7
 Release:	1
-Epoch:		1
+Epoch:		2
 Group:		Plasma/Other
 License:	GPLv2
 BuildRequires:  python
