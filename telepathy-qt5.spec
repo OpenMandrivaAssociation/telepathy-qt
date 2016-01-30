@@ -8,7 +8,6 @@ Release:	1
 Epoch:		1
 Group:		Plasma/Other
 License:	GPLv2
-Source0:		git://anongit.freedesktop.org/telepathy/telepathy-qt4
 BuildRequires:  python
 BuildRequires:  python-dbus
 BuildRequires:  doxygen
