@@ -8,7 +8,13 @@ Release:	1
 Epoch:		1
 Group:		Plasma/Other
 License:	GPLv2
-URL:		git://anongit.freedesktop.org/telepathy/telepathy-qt4
+Source0:		git://anongit.freedesktop.org/telepathy/telepathy-qt4
+BuildRequires:  python
+BuildRequires:  python-dbus
+BuildRequires:  doxygen
+BuildRequires:  libxml2-utils
+BuildRequires:  qml-material
+BuildRequires:  intltool
 BuildRequires:	pkgconfig(farstream-0.2)
 BuildRequires:	pkgconfig(telepathy-farstream)
 BuildRequires:	pkgconfig(telepathy-glib)
@@ -18,18 +24,11 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:	python
-BuildRequires:	python-dbus
-BuildRequires:	cmake
-BuildRequires:	doxygen
-BuildRequires:	libxml2-utils
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Help)
-BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(KF5Declarative)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	qml-material
-BuildRequires:	intltool
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfie(Qt5Help)
+BuildRequires:  cmake(ECM)
+BuildRequires:  cmake(Kf5Declarative)
+BuildRequires:  cmake(Kf5I18n)
 
 %description
 Library for QT5-based Telepathy CLient
