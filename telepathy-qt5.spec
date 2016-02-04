@@ -38,3 +38,14 @@ Library for QT5-based Telepathy CLient
 
 %build
 %make
+
+%files
+%doc README NEWS AUTHORS
+%{_libdir}/libtelepathy-qt5.so.0.0.9.7
+%{_libdir}/libtelepathy-qt5.so.0
+%{_libdir}/libtelepathy-qt5.so
+%{_libdir}/libtelepathy-qt5-service.a
+%{_libdir}/libtelepathy-qt5-farstream.so.0.0.9.7
+%{_libdir}/libtelepathy-qt5-farstream.so.0
+%{_libdir}/libtelepathy-qt5-farstream.so
+
