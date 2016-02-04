@@ -5,7 +5,7 @@
 
 Summary:	qt5 client for telepathy
 Name:		telepathy-qt5
-Version:	0.9.6
+Version:	0.9.6.1
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
