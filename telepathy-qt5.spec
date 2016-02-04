@@ -10,23 +10,23 @@ License:	GPLv2
 URL:		http://telepathy.freedesktop.org
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	doxygen
-BuildRequires:	libxml2-utils
-BuildRequires:	qml-material
-BuildRequires:	intltool
+BuildRequires:  pkgconfig(telepathy-glib)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:	pkgconfig(farstream-0.2)
 BuildRequires:	pkgconfig(telepathy-farstream)
-BuildRequires:	pkgconfig(telepathy-glib)
 BuildRequires:	pkgconfig(gstreamer-1.0)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gobject-2.0)
-BuildRequires:	pkgconfig(gio-2.0)
-BuildRequires:	pkgconfig(gio-unix-2.0)
-BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfie(Qt5Help)
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(KF5Declarative)
-BuildRequires:	cmake(KF5I18n)
+BuildRequires:  libxml2-utils
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:	cmake*Qt5Help)
+BuildRequires:  doxygen
+BuildRequires:  libxml2-utils
+BuildRequires:	Python
+BuildRequires:	Python-dbus
+
 
 %description
 Library for QT5-based Telepathy Client.
