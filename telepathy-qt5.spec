@@ -2,7 +2,7 @@
 %define debug_package %{nil}
 
 Summary:	qt5 client for telepathy
-Name:		telepathy-qt5
+Name:		telepathy-qt
 Version:	0.9.6
 Release:	1
 Group:		System/Libraries
