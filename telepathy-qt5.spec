@@ -1,56 +1,60 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
+%define oname telepathy-qt
+
 Summary:	qt5 client for telepathy
-Name:		telepathy-qt
-Version:	0.9.6
+Name:		telepathy-qt5
+Version:	0.9.6.1
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
 URL:		http://telepathy.freedesktop.org
-Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	doxygen
+Source0:	http://telepathy.freedesktop.org/releases/%{oname}/%{oname}-%{version}.tar.gz
+BuildRequires:  pkgconfig(farstream-0.2)
+BuildRequires:  pkgconfig(telepathy-farstream)
 BuildRequires:  pkgconfig(telepathy-glib)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:	pkgconfig(farstream-0.2)
-BuildRequires:	pkgconfig(telepathy-farstream)
-BuildRequires:	pkgconfig(gstreamer-1.0)
-BuildRequires:	cmake(ECM)
-BuildRequires:  libxml2-utils
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:	cmake*Qt5Help)
+BuildRequires:  pkgconfig(gstreamer-interfaces-0.10)
+BuildRequires:  python
+BuildRequires:  python-dbus
+BuildRequires:  cmake
 BuildRequires:  doxygen
+BuildRequires:  qt4-devel
+BuildRequires:  qt4-assistant
 BuildRequires:  libxml2-utils
-BuildRequires:	Python
-BuildRequires:	Python-dbus
-
 
 %description
-Library for QT5-based Telepathy Client.
+Qt5 libraries for use in Telepathy clients and connection managers
 
-%prep
-%setup -q
-%cmake_kde5
+#--------------------------------------------------------------------
 
-%build
-%ninja -C build
+%define libtelepathy_qt5_farstream_major 2
+%define libtelepathy_qt5_farstream %mklibname telepathy-qt5-farstream %{libtelepathy_qt5_farstream_major}
 
-%install
-%ninja_install -C build
+%package -n %{libtelepathy_qt5_farstream}
+Summary:        Core Decibel library
+Group:          System/Libraries
 
+%description -n %{libtelepathy_qt5_farstream}
+Core Decibel library.
 
-# WARNING
-# each library needs to follow OpenMandriva library policy
-%files
-%doc README NEWS AUTHORS
-%{_libdir}/libtelepathy-qt5.so.0.0.9.7
-%{_libdir}/libtelepathy-qt5.so.0
-%{_libdir}/libtelepathy-qt5.so
-%{_libdir}/libtelepathy-qt5-service.a
-%{_libdir}/libtelepathy-qt5-farstream.so.0.0.9.7
-%{_libdir}/libtelepathy-qt5-farstream.so.0
-%{_libdir}/libtelepathy-qt5-farstream.so
+%files -n %{libtelepathy_qt5_farstream}
+%{_libdir}/libtelepathy-qt5-farstream.so.%{libtelepathy_qt5_farstream_major}*
+
+#--------------------------------------------------------------------
+
+%define libtelepathy_qt5_major 2
+%define libtelepathy_qt5 %mklibname telepathy-qt5_ %{libtelepathy_qt5_major}
+
+%package -n %{libtelepathy_qt5}
+Summary:        Core Decibel library
+Group:          System/Libraries
+
+%description -n %{libtelepathy_qt5}
+Core Decibel library.
+
+%files -n %{libtelepathy_qt5}
+%{_libdir}/libtelepathy-qt5.so.%{libtelepathy_qt5_major}*
+
+#--------------------------------------------------------------------
 
