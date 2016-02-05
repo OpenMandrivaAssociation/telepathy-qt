@@ -100,7 +100,7 @@ Telepathy Qt development files.
 %build
 export PYTHON=%{__python2}
 %cmake_qt5 -DDESIRED_QT_VERSION=5
-%make
+%make PYTHON=%{__python2}
 
 %install
 %makeinstall -C build
