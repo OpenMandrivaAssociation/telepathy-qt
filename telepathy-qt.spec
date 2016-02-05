@@ -30,7 +30,7 @@ BuildRequires:	pkgconfig(Qt5WebKitWidgets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	pkgconfig(Qt5Xml)
-BuildRequires:	python
+BuildRequires:	python2
 BuildRequires:	python-dbus
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -98,6 +98,7 @@ Telepathy Qt development files.
 %apply_patches
 
 %build
+export PYTHON=%{__python2}
 %cmake_qt5 -DDESIRED_QT_VERSION=5
 %make
 
