@@ -7,19 +7,24 @@ Version:	0.9.6.1
 Release:	1
 Group:		System/Libraries
 License:	GPLv2
-Url:            http://telepathy.freedesktop.org/wiki
-Source0:        http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig(farstream-0.2)
-BuildRequires:  pkgconfig(telepathy-farstream)
-BuildRequires:  pkgconfig(telepathy-glib)
-BuildRequires:  pkgconfig(gstreamer-interfaces-0.10)
-BuildRequires:  python
-BuildRequires:  python-dbus
-BuildRequires:  cmake
-BuildRequires:  doxygen
-BuildRequires:  qt4-devel
-BuildRequires:  qt4-assistant
-BuildRequires:  libxml2-utils
+Url:		http://telepathy.freedesktop.org/wiki
+Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:	pkgconfig(farstream-0.2)
+BuildRequires:	pkgconfig(telepathy-farstream)
+BuildRequires:	pkgconfig(telepathy-glib)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Xml)
+BuildRequires:	python
+BuildRequires:	python-dbus
+BuildRequires:	cmake
+BuildRequires:	doxygen
+BuildRequires:	libxml2-utils
 
 %description
 Qt5 libraries for use in Telepathy clients and connection managers
@@ -59,11 +64,10 @@ Core Decibel library.
 
 %prep
 %setup -q
-%cmake_kde5
-
 
 %build
-%ninja -C build
+%cmake_qt5
+%make
 
 %install
-%ninja_install -C build
+%makeinstall -C build
