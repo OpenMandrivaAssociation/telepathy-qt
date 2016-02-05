@@ -9,16 +9,26 @@ Group:		System/Libraries
 License:	GPLv2
 Url:		http://telepathy.freedesktop.org/wiki
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	pkgconfig(farstream-0.2)
-BuildRequires:	pkgconfig(telepathy-farstream)
+Patch0:		telepathy-qt-0.9.4-fix-link.patch
+BuildRequires:	pkgconfig(telepathy-farstream) >= 0.6
 BuildRequires:	pkgconfig(telepathy-glib)
+BuildRequires:	pkgconfig(farstream-0.2)
 BuildRequires:	pkgconfig(gstreamer-1.0)
-BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(QtCore)
+BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Test)
-BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Qml)
+BuildRequires:	pkgconfig(Qt5Quick)
+BuildRequires:	pkgconfig(Qt5QuickWidgets)
+BuildRequires:	pkgconfig(Qt5Script)
+BuildRequires:	pkgconfig(Qt5Sql)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5WebKit)
+BuildRequires:	pkgconfig(Qt5WebKitWidgets)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	pkgconfig(Qt5Xml)
 BuildRequires:	python
 BuildRequires:	python-dbus
@@ -27,7 +37,7 @@ BuildRequires:	doxygen
 BuildRequires:	libxml2-utils
 
 %description
-Qt5 libraries for use in Telepathy clients and connection managers
+Qt5 libraries for use in Telepathy clients and connection managers.
 
 #--------------------------------------------------------------------
 
@@ -61,12 +71,34 @@ Core Decibel library.
 
 #--------------------------------------------------------------------
 
+%define develname %mklibname telepathy-qt5 -d
+
+%package -n %{develname}
+Summary:	%{name} development files
+Group:		Development/KDE and Qt
+Requires:	%{libtelepathy_qt5} = %{EVRD}
+Requires:	%{libfarstream} = %{EVRD}
+
+%description -n %{develname}
+Telepathy Qt development files.
+
+%files -n %{develname}
+%{_includedir}/*
+%{_libdir}/pkgconfig/*
+%{_libdir}/*.so
+%{_libdir}/libtelepathy-qt5-service.a
+%{_libdir}/cmake/TelepathyQt5
+%{_libdir}/cmake/TelepathyQt5Farstream/
+%{_libdir}/cmake/TelepathyQt5Service/
+
+#--------------------------------------------------------------------
 
 %prep
 %setup -q
+%apply_patches
 
 %build
-%cmake_qt5
+%cmake_qt5 -DDESIRED_QT_VERSION=5
 %make
 
 %install
