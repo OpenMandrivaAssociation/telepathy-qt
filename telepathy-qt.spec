@@ -10,6 +10,9 @@ License:	GPLv2
 Url:		http://telepathy.freedesktop.org/wiki
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
 Patch0:		telepathy-qt-0.9.4-fix-link.patch
+Patch1:		0.9.6.1-default-source.patch
+Patch2:		0.9.6.1-yes-release.patch
+Patch3:		telepathy-qt-0.9.6.1-gstreamer-1.5.patch
 BuildRequires:	pkgconfig(telepathy-farstream) >= 0.6
 BuildRequires:	pkgconfig(telepathy-glib)
 BuildRequires:	pkgconfig(farstream-0.2)
@@ -41,7 +44,7 @@ Qt5 libraries for use in Telepathy clients and connection managers.
 
 #--------------------------------------------------------------------
 
-%define farstream_major 2
+%define farstream_major 0
 %define libfarstream %mklibname telepathy-qt5-farstream %{farstream_major}
 
 %package -n %{libfarstream}
@@ -56,7 +59,7 @@ Core Decibel library.
 
 #--------------------------------------------------------------------
 
-%define libtelepathy_qt5_major 2
+%define libtelepathy_qt5_major 0
 %define libtelepathy_qt5 %mklibname telepathy-qt5_ %{libtelepathy_qt5_major}
 
 %package -n %{libtelepathy_qt5}
@@ -99,8 +102,8 @@ Telepathy Qt development files.
 
 %build
 export PYTHON=%{__python2}
-%cmake_qt5 -DDESIRED_QT_VERSION=5
-%make PYTHON=%{__python2}
+%cmake_qt5 -DDESIRED_QT_VERSION=5 -DENABLE_EXAMPLES=OFF -DPYTHON_EXECUTABLE=%{__python2}
+PYTHON=%{__python2} %make
 
 %install
-%makeinstall -C build
+%makeinstall DESTDIR=%{buildroot} -C build
