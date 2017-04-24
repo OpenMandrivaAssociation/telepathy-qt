@@ -1,5 +1,6 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
+%define _disable_ld_no_undefined 1
 
 Summary:	qt5 client for telepathy
 Name:		telepathy-qt
@@ -33,6 +34,7 @@ BuildRequires:	pkgconfig(Qt5Xml)
 BuildRequires:	python2
 BuildRequires:	python-dbus
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	doxygen
 BuildRequires:	libxml2-utils
 
@@ -71,6 +73,22 @@ Core Decibel library.
 
 #--------------------------------------------------------------------
 
+%define libtelepathy_qt5_service_major 0
+%define libtelepathy_qt5_service %mklibname telepathy-qt5_service %{libtelepathy_qt5_service_major}
+
+%package -n %{libtelepathy_qt5_service}
+Summary:        Core Decibel library
+Group:          System/Libraries
+
+%description -n %{libtelepathy_qt5_service}
+Core Decibel library.
+
+%files -n %{libtelepathy_qt5_service}
+%{_libdir}/libtelepathy-qt5-service.so.%{libtelepathy_qt5_service_major}*
+
+
+#--------------------------------------------------------------------
+
 %define develname %mklibname telepathy-qt5 -d
 
 %package -n %{develname}
@@ -86,7 +104,6 @@ Telepathy Qt development files.
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
-%{_libdir}/libtelepathy-qt5-service.a
 %{_libdir}/cmake/TelepathyQt5
 %{_libdir}/cmake/TelepathyQt5Farstream/
 %{_libdir}/cmake/TelepathyQt5Service/
@@ -99,8 +116,8 @@ Telepathy Qt development files.
 
 %build
 export PYTHON=%{__python2}
-%cmake_qt5 -DDESIRED_QT_VERSION=5 -DENABLE_EXAMPLES=OFF -DPYTHON_EXECUTABLE=%{__python2} -DENABLE_TESTS=OFF
-PYTHON=%{__python2} %make
+%cmake_qt5 -DDESIRED_QT_VERSION=5 -DENABLE_EXAMPLES=OFF -DPYTHON_EXECUTABLE=%{__python2} -DENABLE_TESTS=OFF -G Ninja
+PYTHON=%{__python2} %ninja
 
 %install
-%makeinstall DESTDIR=%{buildroot} -C build
+%ninja_install -C build
