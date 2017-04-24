@@ -115,9 +115,8 @@ Telepathy Qt development files.
 %apply_patches
 
 %build
-export PYTHON=%{__python2}
-%cmake_qt5 -DDESIRED_QT_VERSION=5 -DENABLE_EXAMPLES=OFF -DPYTHON_EXECUTABLE=%{__python2} -DENABLE_TESTS=OFF -G Ninja
-PYTHON=%{__python2} %ninja
+%cmake_qt5 -DDESIRED_QT_VERSION=5 -DENABLE_EXAMPLES=OFF -DENABLE_TESTS=OFF -G Ninja
+%ninja
 
 %install
 %ninja_install -C build
