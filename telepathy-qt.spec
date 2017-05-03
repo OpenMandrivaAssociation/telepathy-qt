@@ -94,6 +94,7 @@ Core Decibel library.
 %package -n %{develname}
 Summary:	%{name} development files
 Group:		Development/KDE and Qt
+Requires:	%{libtelepathy_qt5_service} = %{EVRD}
 Requires:	%{libtelepathy_qt5} = %{EVRD}
 Requires:	%{libfarstream} = %{EVRD}
 
