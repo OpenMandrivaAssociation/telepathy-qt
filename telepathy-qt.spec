@@ -5,7 +5,7 @@
 Summary:	qt5 client for telepathy
 Name:		telepathy-qt
 Version:	0.9.7
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://telepathy.freedesktop.org/wiki
@@ -15,7 +15,7 @@ BuildRequires:	pkgconfig(telepathy-farstream) >= 0.6
 BuildRequires:	pkgconfig(telepathy-glib)
 BuildRequires:	pkgconfig(farstream-0.2)
 BuildRequires:	pkgconfig(gstreamer-1.0)
-BuildRequires:	pkgconfig(QtCore)
+BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Gui)
