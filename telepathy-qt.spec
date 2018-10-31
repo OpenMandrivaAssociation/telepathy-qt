@@ -5,7 +5,7 @@
 Summary:	qt5 client for telepathy
 Name:		telepathy-qt
 Version:	0.9.7
-Release:	3
+Release:	4
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://telepathy.freedesktop.org/wiki
