@@ -114,7 +114,7 @@ Telepathy Qt development files.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake_qt5 -DDESIRED_QT_VERSION=5 -DENABLE_EXAMPLES=OFF -DENABLE_TESTS=OFF -G Ninja
