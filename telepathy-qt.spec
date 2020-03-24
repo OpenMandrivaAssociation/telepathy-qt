@@ -1,11 +1,15 @@
-%define _enable_debug_packages %{nil}
-%define debug_package %{nil}
-%define _disable_ld_no_undefined 1
+#define _enable_debug_packages %{nil}
+#define debug_package %{nil}
+#define _disable_ld_no_undefined 1
+
+# Workaround for the cmake Requires: generator not being smart
+# enough to expand a slew of variables
+%global __requires_exclude cmake.*QT_MODULE
 
 Summary:	qt5 client for telepathy
 Name:		telepathy-qt
-Version:	0.9.7
-Release:	4
+Version:	0.9.8
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://telepathy.freedesktop.org/wiki
@@ -86,6 +90,7 @@ Core Decibel library.
 
 %files -n %{libtelepathy_qt5_service}
 %{_libdir}/libtelepathy-qt5-service.so.%{libtelepathy_qt5_service_major}*
+%{_libdir}/libtelepathy-qt5-service.so.1*
 
 
 #--------------------------------------------------------------------
