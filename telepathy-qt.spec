@@ -35,8 +35,8 @@ BuildRequires:	pkgconfig(Qt5WebKitWidgets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	pkgconfig(Qt5Xml)
-BuildRequires:	python2
-BuildRequires:	python2-dbus
+BuildRequires:	python
+BuildRequires:	python-dbus
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	cmake
 BuildRequires:	ninja
