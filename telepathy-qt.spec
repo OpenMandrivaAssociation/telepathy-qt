@@ -12,7 +12,7 @@ Version:	0.9.8
 Release:	2
 Group:		System/Libraries
 License:	GPLv2
-Url:		http://telepathy.freedesktop.org/wiki
+Url:		https://telepathy.freedesktop.org/wiki
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
 Patch2:		0.9.6.1-yes-release.patch
 BuildRequires:	pkgconfig(telepathy-farstream) >= 0.6
